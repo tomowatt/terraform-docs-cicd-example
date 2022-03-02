@@ -19,5 +19,5 @@ jobs:
         with:
           working-dir: .
           output-file: tf-docs.md
-          fail-on-diff: "true"
+          fail-on-diff: true
       - run: echo "🍏 This job's status is ${{ job.status }}."
