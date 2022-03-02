@@ -15,9 +15,9 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - name: Check Terraform Documentation is up to date!
-        run: |
-          wget -O terraform-docs.tar.gz https://github.com/terraform-docs/terraform-docs/releases/download/v0.16.0/terraform-docs-v0.16.0-linux-amd64.tar.gz
-          tar xzf terraform-docs.tar.gz
-          ./terraform-docs version
-          ./terraform-docs markdown . | diff tf-docs.md - || echo "❌Terraform Documentation Out of Date❌" && false 
+        uses: terraform-docs/gh-actions@v0.11.0
+        with:
+          working-dir: .
+          output-file: README.md
+          fail-on-diff: "true"
       - run: echo "🍏 This job's status is ${{ job.status }}."
